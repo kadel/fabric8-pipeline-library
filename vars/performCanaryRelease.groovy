@@ -49,6 +49,7 @@ def s2iBuild(version){
     def is = getImageStream(ns)
     def bc = getBuildConfig(version, ns)
 
+    println(${env.JOB_NAME})
     sh "oc delete is ${env.JOB_NAME} -n ${ns}"
     kubernetesApply(file: is, environment: ns)
     kubernetesApply(file: bc, environment: ns)
